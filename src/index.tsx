@@ -10,22 +10,26 @@ import App from './App';
 import './i18n';
 import { store } from './store';
 
+import { CookiesProvider } from 'react-cookie';
+
 const theme = createTheme();
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <BrowserRouter>
-                <StyledEngineProvider injectFirst>
-                    <CssBaseline />
-                    <ThemeProvider theme={theme}>
-                        <SnackbarProvider maxSnack={3}>
-                            <App />
-                        </SnackbarProvider>
-                    </ThemeProvider>
-                </StyledEngineProvider>
-            </BrowserRouter>
-        </Provider>
-    </React.StrictMode>,
+    <CookiesProvider>
+        <React.StrictMode>
+            <Provider store={store}>
+                <BrowserRouter>
+                    <StyledEngineProvider injectFirst>
+                        <CssBaseline />
+                        <ThemeProvider theme={theme}>
+                            <SnackbarProvider maxSnack={3}>
+                                <App />
+                            </SnackbarProvider>
+                        </ThemeProvider>
+                    </StyledEngineProvider>
+                </BrowserRouter>
+            </Provider>
+        </React.StrictMode>
+    </CookiesProvider>,
 );

@@ -10,6 +10,8 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import useLoginFormStyle from './LoginForm.style';
 
+import { useCookies } from 'react-cookie';
+
 type LoginFormDataT = {
     email: string;
     password: string;
@@ -31,10 +33,13 @@ function LoginForm() {
         resolver: yupResolver(LoginFormSchema),
     });
     const [login] = useLoginMutation();
+    const [cookies, setCookie] = useCookies(['userData']);
 
     const onSubmit = async (data: LoginFormDataT) => {
         try {
             const body = await login(data).unwrap();
+            // body[0] beacause backend return 1 element
+            setCookie('userData', body[0], { path: '/' });
             navigate('/');
         } catch (err) {
             console.error(err);

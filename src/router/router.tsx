@@ -1,5 +1,5 @@
 import { DashboardSection } from '@features/dashboard';
-import { HomePage, LoginPage } from '@pages';
+import { HomePage, LoginPage, GalleryPage } from '@pages';
 import { Guard } from '@utils';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
@@ -14,6 +14,7 @@ function Router() {
             </Route>
             <Route path="login" element={<LoginPage />} />
             <Route path="*" element={<Navigate to="/login" />} />
+            <Route path="gallery" element={<GalleryPage />} />
         </Routes>
     );
 }

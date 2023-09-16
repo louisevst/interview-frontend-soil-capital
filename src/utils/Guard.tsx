@@ -11,12 +11,12 @@ type GuardT = {
 function Guard({ target, guards }: GuardT): React.ReactElement {
     let redirectUrl = null;
     const { user } = useAuth();
-
     for (let i = 0; i < guards.length; i++) {
         switch (guards[i]) {
             case 'authenticated':
                 if (!user?.id) {
                     redirectUrl = '/login';
+
                     break;
                 }
                 break;
