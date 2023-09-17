@@ -1,9 +1,14 @@
 {
   "app": {
     "name": "Partner Portal",
+    "language": "Change language",
     "profile": {
       "change-password-description": "To change your password, please fill in the fields below"
     }
+  },
+  "notification": {
+    "error": "Oops! It seems your login credentials are incorrect. Please double-check your username and password and try again.",
+    "welcome": "Welcome"
   },
   "buttons": {
     "cancel": "Cancel",
@@ -510,6 +515,8 @@
       "invitation-used": "Invitation already accepted",
       "server-error": "A server error occurred."
     },
+    "gallery": "Gallery",
+    "close": "Close",
     "accept-invite-loading": "Loading of invitation",
     "accept-invite-success": "Invitation accepted",
     "all-farmers": "All farmers",

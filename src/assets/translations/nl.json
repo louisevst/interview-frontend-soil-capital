@@ -1,9 +1,14 @@
 {
   "app": {
     "name": "Partner Portal",
+    "language": "Taal veranderen",
     "profile": {
       "change-password-description": "Vul de onderstaande velden in om uw wachtwoord te wijzigen"
     }
+  },
+  "notification": {
+    "error": "Oeps! Het lijkt erop dat uw inloggegevens onjuist zijn. Controleer uw gebruikersnaam en wachtwoord nogmaals en probeer het opnieuw.",
+    "welcome": "Welkom"
   },
   "buttons": {
     "cancel": "Annuleer",
@@ -447,6 +452,8 @@
       "invitation-used": "Uitnodiging reeds geaccepteerd",
       "server-error": "Er is een serverfout opgetreden."
     },
+    "gallery": "Galerij",
+    "close": "Besloten",
     "accept-invite-loading": "Bezig met laden uitnodiging",
     "accept-invite-success": "Uitnodiging geaccepteerd",
     "all-farmers": "Alle boeren",

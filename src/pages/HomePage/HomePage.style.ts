@@ -12,10 +12,12 @@ type HomePageStyleT = {
 export default makeStyles<HomePageStyleT>()((theme, { sideBarOpen }) => {
     return {
         container: {
-            height: '100vh',
             width: '100vw',
             padding: '15px 20px 20px 20px',
             overflowX: 'hidden',
+            [theme.breakpoints.up('lg')]: {
+                height: '100vh',
+            },
         },
         section: {
             height: `calc(100% - ${topBarHeight} - ${topBarMarginBottom})`,
@@ -25,17 +27,19 @@ export default makeStyles<HomePageStyleT>()((theme, { sideBarOpen }) => {
             marginBottom: topBarMarginBottom,
         },
         sidebar: {
-            position: 'relative',
-            width: sideBarOpen ? sideBarOpenWidth : sideBarClosedWidth,
-            height: '100%',
-            float: 'left',
-            transition: 'all 0.3s ease',
-            '& .sideBarCollapseBtn': {
-                transition: 'opacity 0.15s ease',
-                opacity: 0,
-            },
-            '&:hover .sideBarCollapseBtn': {
-                opacity: 1,
+            [theme.breakpoints.up('lg')]: {
+                position: 'relative',
+                width: sideBarOpen ? sideBarOpenWidth : sideBarClosedWidth,
+                height: '100%',
+                float: 'left',
+                transition: 'all 0.3s ease',
+                '& .sideBarCollapseBtn': {
+                    transition: 'opacity 0.15s ease',
+                    opacity: 0,
+                },
+                '&:hover .sideBarCollapseBtn': {
+                    opacity: 1,
+                },
             },
         },
         content: {
@@ -43,10 +47,14 @@ export default makeStyles<HomePageStyleT>()((theme, { sideBarOpen }) => {
             zIndex: '-1000',
             height: '100%',
             float: 'left',
-            width: `calc(100% - ${sideBarOpen ? sideBarOpenWidth : sideBarClosedWidth})`,
-            borderRadius: '0 20px 20px 0',
+            width: '100%',
+            borderRadius: '20px',
             backgroundColor: '#f6f3E5',
             minHeight: '640px',
+            [theme.breakpoints.up('lg')]: {
+                width: `calc(100% - ${sideBarOpen ? sideBarOpenWidth : sideBarClosedWidth})`,
+                borderRadius: '0 20px 20px 0',
+            },
         },
         hoverableCollapseBtn: {
             zIndex: 1000,

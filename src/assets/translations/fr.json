@@ -1,9 +1,14 @@
 {
   "app": {
     "name": "Portail Partenaires",
+    "language": "Changer de langue",
     "profile": {
       "change-password-description": "Pour changer votre mot de passe, veuillez remplir les champs ci-dessous"
     }
+  },
+  "notification": {
+    "error": "Oops! Les information de connexions ne sont pas correctes. Merci de vérifier votre adresse mail et votre mot de passe, et réessayer.",
+    "welcome": "Bienvenue"
   },
   "buttons": {
     "cancel": "Annuler",
@@ -510,6 +515,8 @@
       "invitation-used": "Invitation déjà acceptée",
       "server-error": "Une erreur serveur s’est produite"
     },
+    "gallery": "Galerie",
+    "close": "Fermer",
     "accept-invite-loading": "Chargement de l’invitation",
     "accept-invite-success": "Invitation acceptée",
     "all-farmers": "Tous les agriculteurs",

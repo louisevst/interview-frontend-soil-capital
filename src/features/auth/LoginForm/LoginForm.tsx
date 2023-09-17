@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, Link, TextField } from '@mui/material';
+import { Box, Button, Checkbox, Link, TextField, Typography } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 import { Link as RouterLink } from 'react-router-dom';
 import * as yup from 'yup';
@@ -11,6 +11,9 @@ import { useNavigate } from 'react-router-dom';
 import useLoginFormStyle from './LoginForm.style';
 
 import { useCookies } from 'react-cookie';
+import { VariantType, useSnackbar } from 'notistack';
+import { useCallback } from 'react';
+import { UserInfoI } from '@services';
 
 type LoginFormDataT = {
     email: string;
@@ -19,9 +22,17 @@ type LoginFormDataT = {
 };
 
 function LoginForm() {
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     const { classes } = useLoginFormStyle();
     const { t } = useTranslation();
     const navigate = useNavigate();
+
+    const notify = useCallback(
+        (message: string, variant: VariantType) => {
+            enqueueSnackbar(message, { variant: variant });
+        },
+        [enqueueSnackbar],
+    );
 
     const LoginFormSchema = yup.object({
         email: yup.string().email(t('validations.email-invalid')).required(t('validations.email-required')),
@@ -39,10 +50,14 @@ function LoginForm() {
         try {
             const body = await login(data).unwrap();
             // body[0] beacause backend return 1 element
-            setCookie('userData', body[0], { path: '/' });
+            const user = body[0] as UserInfoI;
+            setCookie('userData', user, { path: '/' });
+            const msg = `${t('notification.welcome')} ${user.username}`;
+            notify(msg, 'success');
             navigate('/');
         } catch (err) {
             console.error(err);
+            notify(t('notification.error'), 'error');
         }
     };
 
@@ -54,6 +69,8 @@ function LoginForm() {
                         ...register('email'),
                     }}
                     label={t('labels.email')}
+                    autoComplete="current-email"
+                    type="email"
                 />
                 <TextField
                     inputProps={{
@@ -70,7 +87,7 @@ function LoginForm() {
                     <Controller
                         control={control}
                         name="remember"
-                        render={({ field: { onChange, onBlur, value, ref } }) => (
+                        render={({ field: { onChange, onBlur, value, ref, name } }) => (
                             <Checkbox
                                 onBlur={onBlur} // notify when input is touched
                                 onChange={onChange} // send value to hook form
@@ -82,6 +99,7 @@ function LoginForm() {
                             ></Checkbox>
                         )}
                     />
+                    <Typography>{t('labels.remember-me')}</Typography>
                 </Box>
                 <Box mt={6}>
                     <Button type="submit" variant="contained" disableElevation fullWidth>

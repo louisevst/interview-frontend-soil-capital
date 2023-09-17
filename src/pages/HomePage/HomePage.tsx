@@ -4,7 +4,6 @@ import { useState } from 'react';
 import useHomePageStyle from './HomePage.style';
 import SideBar from './SideBar/SideBar';
 import TopBar from './TopBar/TopBar';
-import { Fab } from '@mui/material';
 
 function HomePage() {
     const [sideBarOpen, setSidebarOpen] = useState(true);
@@ -19,14 +18,7 @@ function HomePage() {
             <TopBar className={classes.topbar} />
             <div className={classes.section}>
                 <div className={classes.sidebar}>
-                    <SideBar />
-                    <div className={`hoverableCollapseBtn ${classes.hoverableCollapseBtn}`} />
-                    <Fab
-                        aria-label="collapse"
-                        className={`${classes.sideBarCollapseBtn} sideBarCollapseBtn`}
-                        size="small"
-                        onClick={toggleSideBar}
-                    ></Fab>
+                    <SideBar toggleSideBar={toggleSideBar} isSidebarOpen={sideBarOpen} />
                 </div>
                 <div className={classes.content}>
                     {/* This outlet is a new way to handle sub routers within main router. 

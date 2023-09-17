@@ -10,14 +10,13 @@ import { setUser } from '../src/features/auth/authSlice';
 const App = ({ cookies }: { cookies: Cookies }) => {
     const { initialized } = useAppInit();
 
-    const [cookieData] = useCookies(['userData']); // 'userData' is the cookie name
+    const [cookieData] = useCookies(['userData']);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // Read the 'userData' cookie and dispatch an action to set the user in Redux
         const userData = cookieData['userData'];
         if (userData) {
-            dispatch(setUser(userData)); // Dispatch an action to set user in Redux
+            dispatch(setUser(userData));
         }
     }, [cookieData, dispatch]);
 

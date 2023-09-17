@@ -10,11 +10,10 @@ function Router() {
     return (
         <Routes>
             <Route path="/" element={<Guard target={<HomePage />} guards={['authenticated']} />}>
-                <Route index element={<DashboardSection />} />
+                <Route index element={<DashboardSection />} /> <Route path="gallery" element={<GalleryPage />} />
             </Route>
             <Route path="login" element={<LoginPage />} />
             <Route path="*" element={<Navigate to="/login" />} />
-            <Route path="gallery" element={<GalleryPage />} />
         </Routes>
     );
 }

@@ -1,11 +1,18 @@
 import { useEffect, useState } from 'react';
 import photoI from '../../services/photo.api';
+import { Pagination, Grid, Typography, CircularProgress } from '@mui/material';
+import useGalleryPageStyles from './GalleryPage.style';
+import { useTranslation } from 'react-i18next';
 
 function Gallery() {
+    const { t } = useTranslation();
+    const { classes } = useGalleryPageStyles();
+
     const [photos, setPhotos] = useState<photoI[]>([]);
     const [loading, setLoading] = useState(true);
-    const [currentPage, setCurrentPage] = useState(0); // Track the current page
+    const [currentPage, setCurrentPage] = useState(1);
     const [totalPhotosCount, setTotalPhotosCount] = useState<number | null>(null);
+    const [totalPages, setTotalPages] = useState<number | null>(null);
 
     async function fetchTotalPhotoCount() {
         try {
@@ -15,6 +22,7 @@ function Gallery() {
             }
             const data = await response.json();
             setTotalPhotosCount(data.length);
+            setTotalPages(Math.ceil(data.length / 12));
         } catch (error) {
             console.error(error);
         }
@@ -34,10 +42,10 @@ function Gallery() {
         }
     }
 
-    const loadPhotos = async () => {
+    const loadPhotos = async (page: number) => {
         setLoading(true);
         try {
-            const data = await fetchDataFromApi(currentPage * 10, 10); // Load photos for the current page
+            const data = await fetchDataFromApi(page, 12); // Load photos for the current page
             setPhotos(data);
             setLoading(false);
         } catch (error) {
@@ -46,44 +54,49 @@ function Gallery() {
         }
     };
 
-    const handleNextPage = () => {
-        setCurrentPage((prevPage) => prevPage + 1);
-    };
-
-    const handlePreviousPage = () => {
-        if (currentPage > 0) {
-            setCurrentPage((prevPage) => prevPage - 1);
-        }
+    const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
+        setCurrentPage(page);
     };
 
     useEffect(() => {
-        fetchTotalPhotoCount(); // Fetch the total photo count
-        loadPhotos();
+        if (!totalPhotosCount) {
+            fetchTotalPhotoCount();
+        } // Fetch the total photo count
+        loadPhotos(currentPage);
     }, [currentPage]);
 
     if (loading) {
-        return <main>Loading...</main>;
+        return (
+            <main className={classes.loaderContainer}>
+                <CircularProgress></CircularProgress>
+            </main>
+        );
     }
 
     return (
-        <main>
-            <h1>Photo Gallery</h1>
-            <div className="gallery">
+        <main className={classes.container}>
+            <Typography variant="h3" color="secondary">
+                {t('titles.gallery')}
+            </Typography>
+            <Grid container sx={{ pt: 4, px: 2 }} spacing={2} alignItems="center" justifyContent="center">
                 {photos.map((photo) => (
-                    <div key={photo.id} className="photo">
+                    <Grid item key={photo.id} xs={12} sm={6} md={4} lg={3} className={classes.photoContainer}>
                         <img src={photo.thumbnailUrl} alt={photo.title} />
-                        <p>{photo.title}</p>
-                    </div>
+                        <Typography variant="caption" className={classes.caption}>
+                            {photo.title}
+                        </Typography>
+                    </Grid>
                 ))}
-            </div>
-            <div className="pagination">
-                <button onClick={handlePreviousPage} disabled={currentPage === 0}>
-                    Previous
-                </button>
-                <button onClick={handleNextPage} disabled={currentPage * 10 + 10 >= totalPhotosCount!}>
-                    Next
-                </button>
-            </div>
+                {totalPages !== null && (
+                    <Pagination
+                        count={totalPages}
+                        onChange={handlePageChange}
+                        page={currentPage}
+                        color="primary"
+                        className={classes.pages}
+                    ></Pagination>
+                )}
+            </Grid>
         </main>
     );
 }

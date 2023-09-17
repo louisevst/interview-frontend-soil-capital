@@ -22,3 +22,28 @@ export interface UserI {
         is_active: boolean;
     };
 }
+
+interface AddressI {
+    city: string;
+    geo: { lat: string; lng: string };
+    street: string;
+    suite: string;
+    zipcode: string;
+}
+
+interface CompanyI {
+    name: string;
+    catchPhrase: string;
+    bs: string;
+}
+
+export interface UserInfoI {
+    address: AddressI;
+    company: CompanyI;
+    email: string;
+    id: number;
+    name: string;
+    phone: string;
+    username: string;
+    website: string;
+}

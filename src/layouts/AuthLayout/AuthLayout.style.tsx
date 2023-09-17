@@ -12,7 +12,6 @@ const useLayoutAuthStyle = makeStyles()((theme) => {
                 backgroundImage: `url(${backgroundDots})`,
                 backgroundRepeat: 'repeat',
                 backgroundSize: 'cover',
-                minHeight: '100vh',
                 overflowY: 'auto',
                 padding: theme.spacing(6),
                 [largeScreen]: {
