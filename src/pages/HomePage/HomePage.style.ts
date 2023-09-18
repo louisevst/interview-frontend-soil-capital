@@ -15,7 +15,7 @@ export default makeStyles<HomePageStyleT>()((theme, { sideBarOpen }) => {
             width: '100vw',
             padding: '15px 20px 20px 20px',
             overflowX: 'hidden',
-            [theme.breakpoints.up('lg')]: {
+            [theme.breakpoints.up('md')]: {
                 height: '100vh',
             },
         },

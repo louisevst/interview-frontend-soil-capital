@@ -6,6 +6,23 @@
       "change-password-description": "To change your password, please fill in the fields below"
     }
   },
+  "profile": {
+    "general": "General Infos",
+    "name": "Full name",
+    "username": "Username",
+    "email": "Email address",
+    "phone": "Phone number",
+    "website": "Website",
+    "company": "Company Info",
+    "companyName": "Company name",
+    "companyActivity": "Company's activity",
+    "companySlogan": "Company's slogan",
+    "address": "Address Info",
+    "street": "Street",
+    "number": "Number",
+    "city": "City",
+    "zip": "Zip code"
+  },
   "notification": {
     "error": "Oops! It seems your login credentials are incorrect. Please double-check your username and password and try again.",
     "welcome": "Welcome"
@@ -517,6 +534,7 @@
     },
     "gallery": "Gallery",
     "close": "Close",
+    "profile": "Profile",
     "accept-invite-loading": "Loading of invitation",
     "accept-invite-success": "Invitation accepted",
     "all-farmers": "All farmers",

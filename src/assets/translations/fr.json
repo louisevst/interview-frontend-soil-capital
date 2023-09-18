@@ -6,6 +6,23 @@
       "change-password-description": "Pour changer votre mot de passe, veuillez remplir les champs ci-dessous"
     }
   },
+  "profile": {
+    "general": "Informations générales",
+    "name": "Nom complet",
+    "username": "Nom d'utilisateur",
+    "email": "Addresse mail",
+    "phone": "Numéro de télephone",
+    "website": "Site web",
+    "company": "Informations de l'entreprise",
+    "companyName": "Nom de l'entreprise",
+    "companyActivity": "Activité de l'entreprise",
+    "companySlogan": "Slogan de l'entreprise",
+    "address": "Adresse",
+    "street": "Rue",
+    "number": "Numéro",
+    "city": "Ville",
+    "zip": "Code postal"
+  },
   "notification": {
     "error": "Oops! Les information de connexions ne sont pas correctes. Merci de vérifier votre adresse mail et votre mot de passe, et réessayer.",
     "welcome": "Bienvenue"
@@ -517,6 +534,7 @@
     },
     "gallery": "Galerie",
     "close": "Fermer",
+    "profile": "Profile",
     "accept-invite-loading": "Chargement de l’invitation",
     "accept-invite-success": "Invitation acceptée",
     "all-farmers": "Tous les agriculteurs",

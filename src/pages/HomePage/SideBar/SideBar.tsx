@@ -3,6 +3,7 @@ import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import PhotoOutlinedIcon from '@mui/icons-material/PhotoOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
 import { List, ListItem, ListItemIcon, ListItemText, SvgIcon } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useMatch, useNavigate } from 'react-router-dom';
@@ -74,6 +75,22 @@ function SideBar(props: props) {
                 <div className={classes.nameContainer}>
                     <ListItemText
                         primary={t('titles.gallery')}
+                        primaryTypographyProps={{ className: classes.listItemText }}
+                    />
+                </div>
+            </ListItem>
+            <ListItem
+                className={`${classes.navLink} ${useMatch('/profile') && classes.navLinkActive}`}
+                component="span"
+                button
+                onClick={() => navigate('/profile')}
+            >
+                <ListItemIcon>
+                    <SvgIcon className={classes.listItemIcon} component={AccountBoxOutlinedIcon} viewBox="0 0 24 24" />
+                </ListItemIcon>
+                <div className={classes.nameContainer}>
+                    <ListItemText
+                        primary={t('titles.profile')}
                         primaryTypographyProps={{ className: classes.listItemText }}
                     />
                 </div>

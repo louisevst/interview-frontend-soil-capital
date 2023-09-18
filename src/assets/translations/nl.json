@@ -6,6 +6,23 @@
       "change-password-description": "Vul de onderstaande velden in om uw wachtwoord te wijzigen"
     }
   },
+  "profile": {
+    "general": "Algemene informatie",
+    "name": "Voor-en achternaam",
+    "username": "Gebruikersnaam",
+    "email": "E-mailadres",
+    "phone": "Telefoonnummer",
+    "website": "Website",
+    "company": "Bedrijfsinformatie",
+    "companyName": "Bedrijfsnaam",
+    "companyActivity": "Activiteit van het bedrijf",
+    "companySlogan": "Bedrijfsslogan",
+    "address": "Adres informatie",
+    "street": "Straat",
+    "number": "Nummer",
+    "city": "Stad",
+    "zip": "Postcode"
+  },
   "notification": {
     "error": "Oeps! Het lijkt erop dat uw inloggegevens onjuist zijn. Controleer uw gebruikersnaam en wachtwoord nogmaals en probeer het opnieuw.",
     "welcome": "Welkom"
@@ -452,6 +469,7 @@
       "invitation-used": "Uitnodiging reeds geaccepteerd",
       "server-error": "Er is een serverfout opgetreden."
     },
+    "profile": "Profiel",
     "gallery": "Galerij",
     "close": "Besloten",
     "accept-invite-loading": "Bezig met laden uitnodiging",
