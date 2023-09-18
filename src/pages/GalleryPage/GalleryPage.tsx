@@ -61,7 +61,7 @@ function Gallery() {
     useEffect(() => {
         if (!totalPhotosCount) {
             fetchTotalPhotoCount();
-        } // Fetch the total photo count
+        }
         loadPhotos(currentPage);
     }, [currentPage]);
 

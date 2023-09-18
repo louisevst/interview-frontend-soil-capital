@@ -3,15 +3,17 @@ import { Box, Avatar, Typography, Paper, List, ListItem, ListItemText, Container
 import { deepOrange } from '@mui/material/colors';
 import { UserInfoI } from '@services';
 import { useTranslation } from 'react-i18next';
+import useProfilePageStyle from './ProfilePage.style';
 
 function ProfilePage() {
     const { t } = useTranslation();
+    const { classes } = useProfilePageStyle();
 
     const [cookies] = useCookies(['userData']);
     const userInfo: UserInfoI = cookies.userData;
 
     return (
-        <Box sx={{ p: 2 }}>
+        <Box className={classes.container} sx={{ padding: 2 }}>
             <Container sx={{ marginBottom: 2, display: 'flex', alignItems: 'center' }}>
                 <Avatar sx={{ bgcolor: deepOrange[500] }}>{userInfo.username.charAt(0).toUpperCase()}</Avatar>
                 <Typography variant="h5" pl={2}>
